@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+        <script>
+        	window.addEventListener('message', function(event) {
+                if (event.data.transactionType == "showBodycam") {
+                	var div = document.getElementById("axonOverlay");
+                  	if (event.data.show == true) {
+                    	div.style.display = "block";
+                    	document.getElementById("timestamp").innerHTML = event.data.timestamp;
+                    	document.getElementById("unit").innerHTML = event.data.unit;
+                  	} else {
+                    	div.style.display = "none";
+                  	}
+                }
+
+                if (event.data.transactionType == "updateTime") {
+                  	document.getElementById("timestamp").innerHTML = event.data.timestamp;
+                }
+            });
+        </script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    	<div id='axonOverlay' style='display:none;text-align:right;'>
+        	<div style='color:#ffff;font-weight:bold;font-size:1.2rem;height:75px;position:relative;'>
+          		<img src='images/axon.png' width='5%' height='auto' style='padding:10px;float:right;'>
+				<div style="font-family: 'Roboto Mono', monospace;padding-top:8px;padding-right:70px;">
+					<span id='serial'>AXON BODY 3 X81020805</span>
+					<br>
+					<span id='timestamp'>DATE: 2022-01-01 TIME: 11:22</span>
+					<br>
+					<span id='unit'>UNIT: ItsMatOG</span>
+				</div>
+        	</div>
+      	</div>
+    </body>
+</html>
